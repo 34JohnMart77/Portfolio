@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ATM Interaction System</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #090b10;
+        --panel: #151922;
+        --panel-2: #1d2430;
+        --line: #2c3544;
+        --text: #eef2f7;
+        --muted: #9aa6b8;
+        --accent: #f2a93b;
+        --ok: #4ade80;
+        --danger: #fb7185;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 20% 0%, rgba(242, 169, 59, 0.1), transparent 36%),
+          var(--bg);
+        color: var(--text);
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .atm {
+        width: min(1060px, 100%);
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) 340px;
+        gap: 18px;
+      }
+
+      .machine,
+      .receipt {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+      }
+
+      .machine {
+        padding: 18px;
+      }
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+      }
+
+      .brand img {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+      }
+
+      .status {
+        border: 1px solid rgba(74, 222, 128, 0.32);
+        color: var(--ok);
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+
+      .screen {
+        min-height: 330px;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        background: #08111f;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+
+      h2 {
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+
+      p {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .message {
+        min-height: 24px;
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      button,
+      input {
+        border-radius: 6px;
+        font: inherit;
+      }
+
+      button {
+        border: 1px solid var(--line);
+        background: var(--panel-2);
+        color: var(--text);
+        padding: 11px 12px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        border-color: var(--accent);
+      }
+
+      .primary {
+        background: var(--accent);
+        color: #15110a;
+        border-color: var(--accent);
+        font-weight: 800;
+      }
+
+      .danger {
+        color: var(--danger);
+      }
+
+      .form {
+        display: grid;
+        gap: 10px;
+      }
+
+      input {
+        width: 100%;
+        border: 1px solid var(--line);
+        background: #0f172a;
+        color: var(--text);
+        padding: 12px;
+      }
+
+      .slots {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .slot {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .slot span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 7px;
+      }
+
+      .slot strong {
+        color: var(--text);
+      }
+
+      .receipt {
+        padding: 18px;
+      }
+
+      .receipt h2 {
+        color: var(--accent);
+      }
+
+      .line {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .line strong {
+        color: var(--text);
+        text-align: right;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      @media (max-width: 820px) {
+        body {
+          padding: 14px;
+        }
+
+        .atm,
+        .slots {
+          grid-template-columns: 1fr;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="atm">
+      <section class="machine">
+        <div class="top">
+          <div class="brand">
+            <img src="/atm-logo.svg" alt="ATM logo" />
+            <span>ATM Interaction System</span>
+          </div>
+          <span class="status" id="status">Ready</span>
+        </div>
+
+        <div class="screen">
+          <div>
+            <h1 id="title">Welcome</h1>
+            <p id="copy">Insert your card to begin a secure ATM transaction flow.</p>
+            <p class="message" id="message"></p>
+          </div>
+
+          <div id="cardStep">
+            <button class="primary" type="button" onclick="insertCard()">Insert Card</button>
+          </div>
+
+          <form class="form hidden" id="pinStep" onsubmit="verifyPin(event)">
+            <input id="pinInput" type="password" inputmode="numeric" maxlength="4" placeholder="Enter 4-digit PIN" />
+            <button class="primary" type="submit">Verify PIN</button>
+            <button type="button" class="danger" onclick="cancelTransaction()">Cancel</button>
+          </form>
+
+          <div class="grid hidden" id="menuStep">
+            <button type="button" onclick="showBalance()">Balance Inquiry</button>
+            <button type="button" onclick="startWithdraw()">Withdraw Cash</button>
+            <button type="button" onclick="showReceipt()">Print Receipt</button>
+            <button type="button" class="danger" onclick="cancelTransaction()">Eject Card</button>
+          </div>
+
+          <form class="form hidden" id="withdrawStep" onsubmit="withdrawCash(event)">
+            <input id="amountInput" type="number" min="100" step="100" placeholder="Withdrawal amount" />
+            <button class="primary" type="submit">Confirm Withdrawal</button>
+            <button type="button" onclick="backToMenu()">Back</button>
+          </form>
+        </div>
+
+        <div class="slots">
+          <div class="slot"><span>Card Reader</span><strong id="cardSlot">No card inserted</strong></div>
+          <div class="slot"><span>Cash Dispenser</span><strong id="cashSlot">Idle</strong></div>
+        </div>
+      </section>
+
+      <aside class="receipt">
+        <h2>Transaction Receipt</h2>
+        <div class="line"><span>Account</span><strong>**** 2486</strong></div>
+        <div class="line"><span>Transaction</span><strong id="receiptType">None</strong></div>
+        <div class="line"><span>Amount</span><strong id="receiptAmount">PHP 0</strong></div>
+        <div class="line"><span>Balance</span><strong id="receiptBalance">PHP 25,000</strong></div>
+        <div class="line"><span>Status</span><strong id="receiptStatus">Waiting</strong></div>
+      </aside>
+    </main>
+
+    <script>
+      let balance = 25000;
+      let attempts = 0;
+      let lastType = "None";
+      let lastAmount = 0;
+
+      const peso = new Intl.NumberFormat("en-PH", {
+        style: "currency",
+        currency: "PHP",
+        maximumFractionDigits: 0,
+      });
+
+      function showOnly(id) {
+        ["cardStep", "pinStep", "menuStep", "withdrawStep"].forEach((step) => {
+          document.getElementById(step).classList.toggle("hidden", step !== id);
+        });
+      }
+
+      function setScreen(title, copy, message, status) {
+        document.getElementById("title").textContent = title;
+        document.getElementById("copy").textContent = copy;
+        document.getElementById("message").textContent = message || "";
+        document.getElementById("status").textContent = status;
+      }
+
+      function updateReceipt(type, amount, status) {
+        lastType = type;
+        lastAmount = amount;
+        document.getElementById("receiptType").textContent = type;
+        document.getElementById("receiptAmount").textContent = peso.format(amount);
+        document.getElementById("receiptBalance").textContent = peso.format(balance);
+        document.getElementById("receiptStatus").textContent = status;
+      }
+
+      function insertCard() {
+        document.getElementById("cardSlot").textContent = "Card inserted";
+        setScreen("PIN Verification", "Enter your 4-digit PIN. Demo PIN is 1234.", "", "Card detected");
+        showOnly("pinStep");
+        document.getElementById("pinInput").focus();
+      }
+
+      function verifyPin(event) {
+        event.preventDefault();
+        const pin = document.getElementById("pinInput").value;
+        if (pin === "1234") {
+          attempts = 0;
+          document.getElementById("pinInput").value = "";
+          setScreen("Main Menu", "Choose a transaction using the buttons below.", "PIN verified.", "Authenticated");
+          updateReceipt("PIN Login", 0, "Approved");
+          showOnly("menuStep");
+          return;
+        }
+
+        attempts += 1;
+        if (attempts >= 3) {
+          setScreen("Card Locked", "Too many failed PIN attempts. Transaction cancelled.", "Please contact your bank.", "Locked");
+          updateReceipt("PIN Login", 0, "Failed");
+          showOnly("cardStep");
+          document.getElementById("cardSlot").textContent = "Card retained";
+          return;
+        }
+
+        setScreen("PIN Verification", "Enter your 4-digit PIN. Demo PIN is 1234.", `Invalid PIN. Attempts left: ${3 - attempts}.`, "Retry PIN");
+      }
+
+      function showBalance() {
+        setScreen("Balance Inquiry", `Your available balance is ${peso.format(balance)}.`, "Balance checked successfully.", "Balance shown");
+        updateReceipt("Balance Inquiry", 0, "Approved");
+      }
+
+      function startWithdraw() {
+        setScreen("Cash Withdrawal", "Enter an amount in multiples of PHP 100.", "", "Withdrawal");
+        showOnly("withdrawStep");
+        document.getElementById("amountInput").focus();
+      }
+
+      function withdrawCash(event) {
+        event.preventDefault();
+        const amount = Number(document.getElementById("amountInput").value);
+
+        if (!amount || amount < 100 || amount % 100 !== 0) {
+          setScreen("Cash Withdrawal", "Enter an amount in multiples of PHP 100.", "Invalid amount.", "Input needed");
+          return;
+        }
+
+        if (amount > balance) {
+          setScreen("Cash Withdrawal", "Your requested amount is higher than your available balance.", "Insufficient funds.", "Declined");
+          updateReceipt("Withdrawal", amount, "Declined");
+          return;
+        }
+
+        balance -= amount;
+        document.getElementById("cashSlot").textContent = `${peso.format(amount)} dispensed`;
+        document.getElementById("amountInput").value = "";
+        setScreen("Cash Dispensed", `Please take your cash. Remaining balance is ${peso.format(balance)}.`, "Withdrawal approved.", "Approved");
+        updateReceipt("Withdrawal", amount, "Approved");
+        showOnly("menuStep");
+      }
+
+      function showReceipt() {
+        setScreen("Receipt Printed", "Your receipt is ready. Review the transaction summary on the right.", "Receipt generated.", "Receipt");
+        updateReceipt(lastType, lastAmount, "Printed");
+      }
+
+      function backToMenu() {
+        setScreen("Main Menu", "Choose a transaction using the buttons below.", "", "Authenticated");
+        showOnly("menuStep");
+      }
+
+      function cancelTransaction() {
+        attempts = 0;
+        document.getElementById("cardSlot").textContent = "No card inserted";
+        document.getElementById("cashSlot").textContent = "Idle";
+        document.getElementById("pinInput").value = "";
+        document.getElementById("amountInput").value = "";
+        setScreen("Welcome", "Insert your card to begin a secure ATM transaction flow.", "Card ejected. Thank you.", "Ready");
+        updateReceipt("Session Ended", 0, "Closed");
+        showOnly("cardStep");
+      }
+    </script>
+  </body>
+</html>

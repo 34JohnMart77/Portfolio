@@ -1,0 +1,39 @@
+JOHN MART MURILLON
+Full-Stack Developer — Node.js • TypeScript • React
+Caraga Region, Philippines • Remote-friendly
+Email: johnmart.murillon@gmail.com
+Phone: +63 985 260 9323
+GitHub: https://github.com/34JohnMart77
+LinkedIn: https://linkedin.com/in/johnmartmurillon
+
+SUMMARY
+Full-stack developer focused on building end-to-end products with Node.js/TypeScript on the backend, React on the frontend, and MySQL/MongoDB for data. Comfortable owning API design, schema modeling, auth, and UI from idea to deployment. Recent work includes AI-integrated LMS, trading-style dashboards, and enterprise architecture case studies.
+
+CORE STACK
+Frontend: React, TypeScript, Vite, HTML/CSS, Motion
+Backend: Node.js/Express, Laravel/PHP, REST APIs, OAuth/JWT
+Data: MySQL, MongoDB/Mongoose, XAMPP
+Tools: Git/GitHub, Composer, Vercel
+
+PROJECTS
+— Muri (2025) — AI-powered mobile LMS
+  React + TypeScript + Laravel + MySQL + Claude API
+  Mobile-first learning system with onboarding, streaks, achievements, bookmarks, notes, certificates, and an in-lesson AI tutor.
+
+— Ledger (2025) — Stock Portfolio Dashboard
+  React + TypeScript + Node.js + MongoDB + OAuth
+  Terminal-style dashboard with equity curves, sector filters, holdings table, and a full Mongoose data model.
+
+— Payroll Monitoring System (2024)
+  Laravel/PHP + MySQL + Vercel — https://qr-pay-monitor.vercel.app/
+  Ops tool for tracking employee deductions and generating payroll reports.
+
+— Enterprise Architecture Case Studies (2024-2025)
+  AR E-School AI Chatbot & Kalinga AgriLivestock Enterprise — mapped business → application → data → technology alignment.
+
+EDUCATION
+BS Information Systems — Makilala Institute of Science and Technology (2022 — Present)
+Coursework: Human-Computer Interaction, Enterprise Architecture, Statistics, Data Structures & Algorithms.
+
+CONTACT
+Open to full-time and internship roles. Email is the fastest way to reach me — replies within 24 hours.

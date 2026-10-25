@@ -1,0 +1,13 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="muriGlow" x1="24" y1="20" x2="104" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7B955"/>
+      <stop offset="1" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="112" height="112" rx="28" fill="#0F172A"/>
+  <circle cx="64" cy="64" r="36" fill="url(#muriGlow)" fill-opacity="0.18"/>
+  <path d="M30 38.5C30 31.5964 35.5964 26 42.5 26H85.5C92.4036 26 98 31.5964 98 38.5V61.5C98 68.4036 92.4036 74 85.5 74H62.5L46 90V74H42.5C35.5964 74 30 68.4036 30 61.5V38.5Z" fill="url(#muriGlow)"/>
+  <path d="M42 55.5V41.5H49.5L58.5 52.5L67.5 41.5H75V55.5H68.5V47.5L60.5 57.5H56.5L48.5 47.5V55.5H42Z" fill="#0F172A"/>
+  <circle cx="88" cy="36" r="7" fill="#F8F7F4" fill-opacity="0.9"/>
+</svg>
