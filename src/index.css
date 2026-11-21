@@ -28,6 +28,23 @@
   color-scheme: dark;
 }
 
+:root[data-theme="light"] {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --surface-raised: #f8f8fa;
+  --surface-hover: #eeeeF2;
+  --border: #dedfe5;
+  --border-strong: #cfd1d8;
+  --text: #18191d;
+  --text-muted: #686a73;
+  --text-faint: #8b8d96;
+  --accent-soft: rgba(242, 169, 59, 0.16);
+  --accent-strong: #dc911e;
+  --ok-soft: rgba(34, 197, 94, 0.12);
+
+  color-scheme: light;
+}
+
 * {
   box-sizing: border-box;
 }

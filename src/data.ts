@@ -1,4 +1,12 @@
-import profileImage from "../Profile.jpg";
+import profileImage from "../profile1 (1).jpg";
+import profile1 from "../profile1 (1).jpg";
+import profile2 from "../profile1 (2).jpg";
+import profile3 from "../profile1 (3).jpg";
+import profile4 from "../profile1 (4).jpg";
+import profile5 from "../profile1 (5).jpg";
+import profile6 from "../profile1 (6).jpg";
+import profile7 from "../profile1 (7).jpg";
+import profile8 from "../profile1 (8).jpg";
 import locationImage from "../Location.jpg";
 import certificateImage from "../certificate.jpg";
 import muriLogo from "../muri-logo.jpg";
@@ -8,6 +16,7 @@ export const profile = {
   name: "John Mart Murillon",
   initials: "JM",
   avatar: profileImage,
+  avatarDirections: [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8],
   title: "Full-Stack Developer",
   subtitle: "Node.js • TypeScript • React • MySQL • MongoDB • Laravel • Python • Fast API • Gemini",
   status: "Open to junior roles & internships",

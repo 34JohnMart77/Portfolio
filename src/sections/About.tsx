@@ -16,10 +16,13 @@ const itemVariants = {
 
 export default function About({
   onNavigate,
+  theme,
 }: {
   onNavigate: (tab: TabKey) => void;
+  theme: "dark" | "light";
 }) {
-  const [gaze, setGaze] = useState({ x: 0, y: 0 });
+  const [portraitDirection, setPortraitDirection] = useState(0);
+  const [isSmiling, setIsSmiling] = useState(false);
   const portraitRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -30,10 +33,18 @@ export default function About({
       const x = ((event.clientX - (bounds.left + bounds.width / 2)) / (bounds.width / 2));
       const y = ((event.clientY - (bounds.top + bounds.height / 2)) / (bounds.height / 2));
 
-      setGaze({
-        x: Math.max(-1, Math.min(1, x)),
-        y: Math.max(-1, Math.min(1, y)),
-      });
+      const gazeX = Math.max(-1, Math.min(1, x));
+      const gazeY = Math.max(-1, Math.min(1, y));
+
+      let direction = 0;
+      if (gazeY < -0.35) {
+        direction = gazeX < -0.35 ? 7 : gazeX > 0.35 ? 1 : 0;
+      } else if (gazeY > 0.35) {
+        direction = gazeX < -0.35 ? 5 : gazeX > 0.35 ? 3 : 4;
+      } else {
+        direction = gazeX < -0.35 ? 6 : gazeX > 0.35 ? 2 : 0;
+      }
+      setPortraitDirection(direction);
     };
 
     window.addEventListener("pointermove", updateGaze, { passive: true });
@@ -110,17 +121,28 @@ export default function About({
                 <span>PH · 2026</span>
               </div>
             </div>
-            <div className="about-scene__portrait" ref={portraitRef}>
-              <img src={profile.avatar} alt="" />
-              <span
-                className="about-scene__eye about-scene__eye--left"
-                style={{ transform: `translate(${gaze.x * 2.5}px, ${gaze.y * 1.8}px)` }}
+            <div
+              className={`about-scene__portrait about-scene__portrait--${theme}${isSmiling ? " about-scene__portrait--smile" : ""}`}
+              ref={portraitRef}
+              role="button"
+              tabIndex={0}
+              aria-label="Click portrait to smile"
+              onClick={() => {
+                setIsSmiling(true);
+                window.setTimeout(() => setIsSmiling(false), 1800);
+              }}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  setIsSmiling(true);
+                  window.setTimeout(() => setIsSmiling(false), 1800);
+                }
+              }}
+            >
+              <img
+                src={profile.avatarDirections[portraitDirection] ?? profile.avatar}
+                alt="John Mart Murillon portrait"
               />
-              <span
-                className="about-scene__eye about-scene__eye--right"
-                style={{ transform: `translate(${gaze.x * 2.5}px, ${gaze.y * 1.8}px)` }}
-              />
-              <span className="about-scene__badge">JM</span>
+              <span className="about-scene__mouth" aria-hidden="true" />
             </div>
             <span className="about-scene__chip about-scene__chip--react">React</span>
             <span className="about-scene__chip about-scene__chip--typescript">TypeScript</span>
