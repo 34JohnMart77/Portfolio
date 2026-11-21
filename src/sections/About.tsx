@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 import { FiArrowDownRight, FiArrowUpRight, FiMail } from "react-icons/fi";
 import { doing, profile } from "../data";
 import type { TabKey } from "../components/Nav";
@@ -18,6 +19,32 @@ export default function About({
 }: {
   onNavigate: (tab: TabKey) => void;
 }) {
+  const [gaze, setGaze] = useState({ x: 0, y: 0 });
+  const portraitRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const updateGaze = (event: PointerEvent) => {
+      const bounds = portraitRef.current?.getBoundingClientRect();
+      if (!bounds) return;
+
+      const x = ((event.clientX - (bounds.left + bounds.width / 2)) / (bounds.width / 2));
+      const y = ((event.clientY - (bounds.top + bounds.height / 2)) / (bounds.height / 2));
+
+      setGaze({
+        x: Math.max(-1, Math.min(1, x)),
+        y: Math.max(-1, Math.min(1, y)),
+      });
+    };
+
+    window.addEventListener("pointermove", updateGaze, { passive: true });
+    window.addEventListener("pointerdown", updateGaze, { passive: true });
+
+    return () => {
+      window.removeEventListener("pointermove", updateGaze);
+      window.removeEventListener("pointerdown", updateGaze);
+    };
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -83,9 +110,17 @@ export default function About({
                 <span>PH · 2026</span>
               </div>
             </div>
-            <div className="about-scene__portrait">
+            <div className="about-scene__portrait" ref={portraitRef}>
               <img src={profile.avatar} alt="" />
-              <span>JM</span>
+              <span
+                className="about-scene__eye about-scene__eye--left"
+                style={{ transform: `translate(${gaze.x * 2.5}px, ${gaze.y * 1.8}px)` }}
+              />
+              <span
+                className="about-scene__eye about-scene__eye--right"
+                style={{ transform: `translate(${gaze.x * 2.5}px, ${gaze.y * 1.8}px)` }}
+              />
+              <span className="about-scene__badge">JM</span>
             </div>
             <span className="about-scene__chip about-scene__chip--react">React</span>
             <span className="about-scene__chip about-scene__chip--typescript">TypeScript</span>

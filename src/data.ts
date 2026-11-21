@@ -1,18 +1,19 @@
 import profileImage from "../Profile.jpg";
 import locationImage from "../Location.jpg";
+import certificateImage from "../certificate.jpg";
 
 export const profile = {
   name: "John Mart Murillon",
   initials: "JM",
   avatar: profileImage,
   title: "Full-Stack Developer",
-  subtitle: "Node.js • TypeScript • React",
+  subtitle: "Node.js • TypeScript • React • MySQL • MongoDB • Laravel • Python • Fast API • Gemini",
   status: "Open to junior roles & internships",
   email: "johnmart.murillon@gmail.com",
-  phone: "+63 985 260 9323",
+  phone: "+63 985 626 0932",
+  locationImage: locationImage,
   location: "Caraga Region, Philippines • Remote-friendly",
-  locationImage,
-  focus: "Node.js • TypeScript • React • MySQL • MongoDB • Laravel",
+  focus: "Node.js • TypeScript • React • MySQL • MongoDB • Laravel • Python • Fast API • Gemini",
   tagline: "I build end-to-end products — from REST APIs & database design to polished React interfaces.",
   socials: [
     { label: "GitHub", href: "https://github.com/34JohnMart77" },
@@ -135,7 +136,7 @@ export const projects: Project[] = [
     detail:
     "Learning should be fun,not boring.Muri is an AI=powerd learning app that help you study everday",
     stack: ["Python", "React", "Mysql", "Gemini", "Render"],
-    logo: "/muri-logo.svg",
+    logo: "/muri-logo.jpg",
     liveUrl: "https://muri-d93k.onrender.com",
     featured: true,
   },
@@ -146,14 +147,14 @@ export const projects: Project[] = [
     summary: "Payroll ops dashboard for tracking deductions & generating reports.",
     detail:
       "Internal tool for MdBusinessCenter. Admins manage employees, monitor deductions, and generate payroll reports in one place — previously scattered across spreadsheets.",
-    stack: ["Nodejs", "Reactjs", "MongoDb", "Vercel"],
-    logo: "/payroll-logo.svg",
+    stack: ["Nodejs", "Reactjs", "MongoDb", "Lovable", "Vercel"],
+    logo: "/rcmeatshop.png",
     liveUrl: "https://qr-pay-monitor.vercel.app/",
     featured: true,
   },
 ]
 
-export const notes = [
+export const notes: { date: string; title: string; body: string; image?: string }[] = [
   {
     date: "Aug 2025",
     title: "Getting Composer & XAMPP to stop fighting Windows",
@@ -165,10 +166,10 @@ export const notes = [
     body: "After building two org profiles end-to-end, here's why business → tech traceability matters — and what breaks when you skip it.",
   },
   {
-    data: "Jan 2026",
+    date: "Jan 2026",
     title: "Certificate of National Certificate 2 in CSS",
     body: "I know how to setp-up and Operating System and TroubleShoot Sharing IP Adress in Computer and Print between another computer that have 1 computer usable",
- 
+    image: certificateImage,
   },
   {
     date: "November 2026",

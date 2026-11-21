@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { FormEvent } from "react";
 import { motion } from "motion/react";
 import { profile } from "../data";
+import LocationMap from "../components/LocationMap";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -47,11 +48,9 @@ export default function Contact() {
         </form>
 
         <div className="contact-panel">
-          {profile.locationImage && (
-            <div className="contact-panel__location-wrap">
-              <img src={profile.locationImage} alt="Location" className="contact-panel__location-img" loading="lazy" />
-            </div>
-          )}
+          <div className="contact-panel__location-wrap">
+            <LocationMap />
+          </div>
           <div>
             <span className="contact-panel__line-accent">email</span> {profile.email}
           </div>

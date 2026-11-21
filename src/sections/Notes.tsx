@@ -14,7 +14,13 @@ export default function Notes() {
         {notes.map((n) => (
           <div className="note-card" key={n.title}>
             <span className="note-card__date">{n.date}</span>
-            <h3 className="note-card__title">{n.title}</h3>
+            <h3 className="note-card__title">
+              {n.image ? (
+                <a href={n.image} target="_blank" rel="noopener noreferrer" aria-label={`Open ${n.title} in a new tab`}>
+                  {n.title}
+                </a>
+              ) : n.title}
+            </h3>
             <p className="note-card__body">{n.body}</p>
           </div>
         ))}
