@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { FiArrowDownRight, FiArrowUpRight, FiMail } from "react-icons/fi";
-import { doing, profile, projects } from "../data";
+import { doing, profile } from "../data";
 import type { TabKey } from "../components/Nav";
 
 const listVariants = {
@@ -28,12 +28,12 @@ export default function About({
         <div className="about-hero__copy">
           <p className="section-eyebrow">JUNIOR SOFTWARE ENGINEER · OPEN TO OPPORTUNITIES</p>
           <h2 className="about-hero__title" id="about-title">
-            I build software that makes <span>everyday work better.</span>
+            I build software and website that makes <span>everyday work better.</span>
           </h2>
           <p className="about-hero__intro">
             I’m {profile.name}, a full-stack developer and Information Systems student
-            in the Philippines. I turn practical problems into thoughtful web
-            applications, from the interface and API to the data behind it.
+            in the Makilala Institute Science and Technology(MIST). I build an Ai and  understanding the problem  and how to solve it 
+
           </p>
           <div className="about-hero__actions">
             <button
@@ -61,25 +61,45 @@ export default function About({
           </div>
         </div>
 
-        <aside className="about-snapshot" aria-label="Developer profile summary">
-          <div className="about-snapshot__top">
-            <span className="about-snapshot__indicator" />
-            <span>DEVELOPER SNAPSHOT</span>
-            <span className="about-snapshot__location">PH</span>
+        <aside className="about-scene" aria-label="A 3D-inspired developer workspace">
+          <div className="about-scene__stage" aria-hidden="true">
+            <div className="about-scene__halo" />
+            <div className="about-scene__orbit about-scene__orbit--outer" />
+            <div className="about-scene__orbit about-scene__orbit--inner" />
+            <div className="about-scene__window">
+              <div className="about-scene__window-top">
+                <span /><span /><span />
+                <span className="about-scene__filename">developer.ts</span>
+              </div>
+              <div className="about-scene__code">
+                <span><i>01</i><b>const</b> developer = {"{"}</span>
+                <span><i>02</i>&nbsp;&nbsp;build: <em>"useful things"</em>,</span>
+                <span><i>03</i>&nbsp;&nbsp;learn: <em>"every day"</em>,</span>
+                <span><i>04</i>&nbsp;&nbsp;ship: <strong>true</strong></span>
+                <span><i>05</i>{"}"}</span>
+              </div>
+              <div className="about-scene__window-footer">
+                <span><span className="about-scene__indicator" /> AVAILABLE FOR OPPORTUNITIES</span>
+                <span>PH · 2026</span>
+              </div>
+            </div>
+            <div className="about-scene__portrait">
+              <img src={profile.avatar} alt="" />
+              <span>JM</span>
+            </div>
+            <span className="about-scene__chip about-scene__chip--react">React</span>
+            <span className="about-scene__chip about-scene__chip--typescript">TypeScript</span>
+            <span className="about-scene__chip about-scene__chip--node">Node.js</span>
+            <span className="about-scene__chip about-scene__chip--python">Python</span>
+            <span className="about-scene__spark about-scene__spark--one">+</span>
+            <span className="about-scene__spark about-scene__spark--two">*</span>
           </div>
-          <p className="about-snapshot__code"><span>const</span> developer = {"{"}</p>
-          <dl className="about-snapshot__details">
-            <div><dt>focus</dt><dd>Full-stack web apps</dd></div>
-            <div><dt>education</dt><dd>BS Information Systems</dd></div>
-            <div><dt>approach</dt><dd>Build · learn · improve</dd></div>
-            <div><dt>projects</dt><dd>{projects.filter((project) => !project.status).length} built projects</dd></div>
-          </dl>
-          <p className="about-snapshot__code about-snapshot__code--end">{"}"}</p>
           <button
             type="button"
-            className="about-snapshot__link"
+            className="about-scene__link"
             onClick={() => onNavigate("resume")}
           >
+            <span>Developer snapshot</span>
             See my background <FiArrowDownRight aria-hidden="true" />
           </button>
         </aside>

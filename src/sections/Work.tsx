@@ -1,14 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { projects } from "../data";
-import type { ProjectCategory } from "../data";
-
-const categories: ("All" | ProjectCategory)[] = [
-  "All",
-  "Full-Stack Apps",
-  "Mobile",
-  "Concepts",
-];
 
 type ChatMessage = {
   sender: "bot" | "user";
@@ -27,7 +19,6 @@ function getMuriReply(input: string) {
 }
 
 export default function Work() {
-  const [filter, setFilter] = useState<"All" | ProjectCategory>("All");
   const [openTitle, setOpenTitle] = useState<string | null>(null);
   const [chatInput, setChatInput] = useState("");
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([
@@ -37,14 +28,13 @@ export default function Work() {
     },
   ]);
 
-  const filtered =
-    filter === "All" ? projects : projects.filter((project) => project.category === filter);
   const open = projects.find((project) => project.title === openTitle);
 
   const handleProjectOpen = (title: string) => {
     const selectedProject = projects.find((project) => project.title === title);
     if (selectedProject?.liveUrl) {
       window.open(selectedProject.liveUrl, "_blank", "noopener,noreferrer");
+      return;
     }
     setOpenTitle(title);
   };
@@ -71,25 +61,11 @@ export default function Work() {
       <p className="section-eyebrow">~ ls ./projects</p>
       <h2 className="section-title">Portfolio</h2>
       <p className="section-body">
-        Selected work, plus clearly labeled project concepts I plan to build next.
+        A selection of projects I have built.
       </p>
 
-      <div className="filter-row" aria-label="Filter projects">
-        {categories.map((category) => (
-          <button
-            key={category}
-            type="button"
-            className={`filter-chip ${filter === category ? "filter-chip--active" : ""}`}
-            onClick={() => setFilter(category)}
-            aria-pressed={filter === category}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
       <div className="project-grid">
-        {filtered.map((project) => (
+        {projects.map((project) => (
           <article
             className="project-card"
             key={project.title}

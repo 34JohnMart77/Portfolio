@@ -37,30 +37,26 @@ export const doing = [
   {
     tag: "02",
     title: "AI-Integrated Features",
-    body: "Embedding Claude AI into products — like Muri's in-lesson tutor — to turn static content into conversational, adaptive learning.",
+    body: "Embedding Gemini Api —  Muri's its ai power learning apps you get and certificate  when you finish the course.",
   },
   {
     tag: "03",
-    title: "Enterprise Architecture",
-    body: "Translating business goals into aligned application, data & technology architectures — documented and traceable for real organizations.",
+    title: "Figma",
+    body: " I use figma prototype  and desing UX  and UI they two project i build ",
   },
   {
     tag: "04",
-    title: "UX & Interaction Design",
-    body: "Mapping user flows and validating usability (HCI) before coding, so interfaces feel intentional, not accidental.",
+    title: "Basic Networking ",
+    body: "I learn  about how ip Adress communicate and how cisco packet works",
   },
-  {
-    tag: "05",
-    title: "Internal Tools & Ops Systems",
-    body: "Building ops-focused systems like payroll monitoring and agri-livestock dashboards that make reporting and tracking actually usable.",
-  },
+
 ];
 
 export const education = [
   {
     school: "BS Information Systems",
     place: "Makilala Institute of Science and Technology",
-    period: "2022 — Present",
+    period: "2026 — Present",
     body: "Relevant coursework: Human-Computer Interaction, Enterprise Architecture, Statistics, Data Structures & Algorithms. Consistently applying theory through self-directed full-stack builds.",
   },
 ];
@@ -72,18 +68,8 @@ export const experience = [
     body: "AI-powered Learning Management System. Evolved from desktop prototype to mobile-first app: onboarding, streaks, achievements, bookmarks, notes, certificates, and a Claude-powered AI tutor integrated at the lesson level.",
   },
   {
-    role: "Full-Stack Developer — Ledger (Personal Project)",
-    period: "2025",
-    body: "Stock portfolio dashboard with a terminal-inspired UI — live equity curves, sector filtering, holdings table, and a complete MongoDB/Mongoose + OAuth architecture.",
-  },
-  {
-    role: "Enterprise Architecture — Course Lead Projects",
-    period: "2024 — 2025",
-    body: "Authored full EA alignment profiles for two organizations (AR E-School AI Chatbot & Kalinga AgriLivestock Enterprise) covering business → application → data → technology traceability.",
-  },
-  {
     role: "Full-Stack Developer — Payroll Monitoring System",
-    period: "2024",
+    period: "2025",
     body: "Payroll ops tool for MdBusinessCenter — centralized attendance, deductions, and reporting so admins can audit payroll in one place. Stack: Laravel/PHP, MySQL, deployed on Vercel.",
   },
 ];
@@ -93,30 +79,32 @@ export const skillGroups = [
     key: "frontend",
     label: "Frontend",
     skills: [
-      { name: "React / Next.js", level: 88 },
-      { name: "TypeScript", level: 84 },
-      { name: "Vite / Tooling", level: 82 },
-      { name: "HTML / CSS / Motion", level: 85 },
+      { name: "React / Node.js", level: 50 },
+      { name: "TypeScript", level: 50 },
+      { name: "Vite / Tooling", level: 50 },
+      { name: "HTML / CSS / Motion", level: 50 },
     ],
   },
   {
     key: "backend",
     label: "Backend",
     skills: [
-      { name: "Node.js / Express", level: 86 },
-      { name: "Laravel / PHP", level: 80 },
-      { name: "REST APIs & Auth", level: 83 },
-      { name: "OAuth / JWT", level: 78 },
+      { name: "Node.js / Express", level: 50 },
+      { name: "Laravel / PHP", level: 50 },
+      { name: "REST APIs & Auth", level: 50 },
+      { name: "OAuth / JWT", level: 50 },
+      { name: "Python / Fast API ", level:50},
     ],
   },
   {
     key: "tools",
     label: "Data & Tools",
     skills: [
-      { name: "MySQL / MongoDB", level: 82 },
-      { name: "Git / GitHub", level: 85 },
-      { name: "Composer / XAMPP", level: 80 },
-      { name: "Vercel / Deployment", level: 78 },
+      { name: "MySQL / MongoDB", level: 50 },
+      { name: "Git / GitHub", level: 50 },
+      { name: "Composer / XAMPP", level: 50 },
+      { name: "Vercel / Deployment", level: 50 },
+      { name: "Render / Deployment", level: 50}
     ],
   },
 ];
@@ -142,65 +130,28 @@ export const projects: Project[] = [
   {
     title: "Muri",
     category: "Mobile",
-    year: "2025",
-    summary: "AI-powered mobile LMS with an in-lesson Claude tutor, streaks & certificates.",
+    year: "2026",
+    summary: "Learn Play and Grow",
     detail:
-      "Flagship mobile learning system. Started as a desktop prototype, shipped as a feature-rich mobile app: auth & onboarding, streak/achievement system, bookmarks, notes, completion certificates, and a Claude API tutor that answers in context — without leaving the lesson.",
-    stack: ["React", "TypeScript", "Laravel", "MySQL", "Claude API"],
+    "Learning should be fun,not boring.Muri is an AI=powerd learning app that help you study everday",
+    stack: ["Python", "React", "Mysql", "Gemini", "Render"],
     logo: "/muri-logo.svg",
-    demoType: "chatbot",
+    liveUrl: "https://muri-d93k.onrender.com",
     featured: true,
-  },
-  {
-    title: "TaskFlow",
-    category: "Concepts",
-    summary: "A team task board for planning work, tracking issues, and sharing progress.",
-    detail:
-      "Planned concept, not yet built. The goal is a full-stack project tracker with workspaces, kanban boards, task assignments, due dates, comments, and filtered views. A strong build would include authenticated APIs, input validation, and clear loading and error states.",
-    stack: ["React", "TypeScript", "Node.js", "Express", "MongoDB"],
-    status: "Planned concept",
   },
   {
     title: "Payroll Monitoring System",
     category: "Full-Stack Apps",
-    year: "2024",
+    year: "2025",
     summary: "Payroll ops dashboard for tracking deductions & generating reports.",
     detail:
       "Internal tool for MdBusinessCenter. Admins manage employees, monitor deductions, and generate payroll reports in one place — previously scattered across spreadsheets.",
-    stack: ["Laravel", "PHP", "MySQL", "Vercel"],
+    stack: ["Nodejs", "Reactjs", "MongoDb", "Vercel"],
     logo: "/payroll-logo.svg",
     liveUrl: "https://qr-pay-monitor.vercel.app/",
-    githubUrl: "https://github.com/34JohnMart77",
     featured: true,
   },
-  {
-    title: "ShopStack",
-    category: "Concepts",
-    summary: "A responsive online store with product browsing and an admin inventory view.",
-    detail:
-      "Planned concept, not yet built. Build a product catalogue, search and filters, shopping cart, order history, and a protected admin area for products and stock. The focus is reliable CRUD workflows, server-side validation, and a relational data model.",
-    stack: ["React", "TypeScript", "Laravel", "PHP", "MySQL"],
-    status: "Planned concept",
-  },
-  {
-    title: "API Monitor",
-    category: "Concepts",
-    summary: "A developer dashboard for organizing API endpoints and reviewing check history.",
-    detail:
-      "Planned concept, not yet built. Create a dashboard to register endpoints, configure check intervals, and review response status and latency history. The project would demonstrate API design, scheduled jobs, persistence, and charts that communicate service health clearly.",
-    stack: ["React", "TypeScript", "Node.js", "REST API", "MySQL"],
-    status: "Planned concept",
-  },
-  {
-    title: "DevNotes",
-    category: "Concepts",
-    summary: "A publishing workspace for writing, organizing, and searching developer notes.",
-    detail:
-      "Planned concept, not yet built. Build a small content-management system with a markdown editor, drafts, tags, search, and a public article view. Add authentication and publishing permissions to demonstrate a complete content workflow.",
-    stack: ["React", "TypeScript", "Node.js", "Express", "MongoDB"],
-    status: "Planned concept",
-  },
-];
+]
 
 export const notes = [
   {
@@ -214,7 +165,13 @@ export const notes = [
     body: "After building two org profiles end-to-end, here's why business → tech traceability matters — and what breaks when you skip it.",
   },
   {
-    date: "Jun 2025",
+    data: "Jan 2026",
+    title: "Certificate of National Certificate 2 in CSS",
+    body: "I know how to setp-up and Operating System and TroubleShoot Sharing IP Adress in Computer and Print between another computer that have 1 computer usable",
+ 
+  },
+  {
+    date: "November 2026",
     title: "Shipping an AI tutor inside a mobile LMS",
     body: "How Muri's Claude tutor went from a bolted-on chat box to a lesson-native assistant that feels like part of the course.",
   },
