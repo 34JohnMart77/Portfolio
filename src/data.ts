@@ -1,6 +1,8 @@
 import profileImage from "../Profile.jpg";
 import locationImage from "../Location.jpg";
 import certificateImage from "../certificate.jpg";
+import muriLogo from "../muri-logo.jpg";
+import payrollLogo from "../rcmeatshop.png";
 
 export const profile = {
   name: "John Mart Murillon",
@@ -136,7 +138,7 @@ export const projects: Project[] = [
     detail:
     "Learning should be fun,not boring.Muri is an AI=powerd learning app that help you study everday",
     stack: ["Python", "React", "Mysql", "Gemini", "Render"],
-    logo: "/muri-logo.jpg",
+    logo: muriLogo,
     liveUrl: "https://muri-d93k.onrender.com",
     featured: true,
   },
@@ -148,7 +150,7 @@ export const projects: Project[] = [
     detail:
       "Internal tool for MdBusinessCenter. Admins manage employees, monitor deductions, and generate payroll reports in one place — previously scattered across spreadsheets.",
     stack: ["Nodejs", "Reactjs", "MongoDb", "Lovable", "Vercel"],
-    logo: "/rcmeatshop.png",
+    logo: payrollLogo,
     liveUrl: "https://qr-pay-monitor.vercel.app/",
     featured: true,
   },
