@@ -10,6 +10,7 @@ import Resume from "./sections/Resume";
 import Work from "./sections/Work";
 import Notes from "./sections/Notes";
 import Contact from "./sections/Contact";
+import logoAsset from "../logo.jpg";
 
 type PanelProps = { onNavigate: (tab: TabKey) => void; theme: "dark" | "light" };
 
@@ -61,7 +62,7 @@ function App() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: shouldReduceMotion ? 0.01 : 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <img className="dev-loader__mark" src="/logo.jpg" alt="JohnMart Dev logo" />
+            <img className="dev-loader__mark" src={logoAsset} alt="JohnMart Dev logo" />
           </motion.div>
           <motion.div
             className="dev-loader__name"
