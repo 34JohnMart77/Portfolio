@@ -10,22 +10,23 @@
   background:
     radial-gradient(circle at 50% 42%, rgba(242,169,59,0.12), transparent 24%),
     var(--bg);
+  backdrop-filter: blur(10px);
+}
+
+.dev-loader__mark-wrap {
+  display: grid;
+  place-items: center;
+  animation: loader-float 2.8s ease-in-out infinite;
 }
 
 .dev-loader__mark {
-  width: 72px;
-  height: 72px;
-  display: grid;
-  place-items: center;
+  width: 88px;
+  height: 88px;
+  display: block;
   border: 1px solid rgba(242,169,59,0.55);
-  border-radius: 22px;
-  background: var(--accent);
-  color: #171208;
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 800;
-  transform: rotate(-4deg);
-  animation: loader-pulse 1s ease-in-out infinite alternate;
+  border-radius: 26px;
+  object-fit: cover;
+  box-shadow: 0 0 0 8px rgba(242,169,59,0.06), 0 16px 50px rgba(242,169,59,0.2);
 }
 
 .dev-loader__name {
@@ -49,20 +50,26 @@
 
 .dev-loader__track span {
   display: block;
-  width: 55%;
+  width: 42%;
   height: 100%;
   border-radius: inherit;
-  background: var(--accent);
-  animation: loader-track 1.15s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, var(--accent) 24%, #ffe0a3 50%, var(--accent) 76%, transparent);
+  animation: loader-track 1.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
-@keyframes loader-pulse {
-  to { transform: rotate(4deg) scale(1.04); box-shadow: 0 0 30px rgba(242,169,59,0.18); }
+@keyframes loader-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
 }
 
 @keyframes loader-track {
   from { transform: translateX(-110%); }
   to { transform: translateX(210%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dev-loader__mark-wrap,
+  .dev-loader__track span { animation: none; }
 }
 
 /* ---------- shell ---------- */

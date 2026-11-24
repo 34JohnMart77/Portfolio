@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { ComponentType } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import { TopNav, BottomNav } from "./components/Nav";
@@ -24,6 +24,7 @@ const panels: Record<TabKey, ComponentType<PanelProps>> = {
 function App() {
   const [tab, setTab] = useState<TabKey>("about");
   const [isLoading, setIsLoading] = useState(true);
+  const shouldReduceMotion = useReducedMotion();
   const [theme, setTheme] = useState<"dark" | "light">(() => {
     const saved = window.localStorage.getItem("portfolio-theme");
     return saved === "light" ? "light" : "dark";
@@ -41,20 +42,40 @@ function App() {
   }, []);
   const Panel = panels[tab];
 
-  if (isLoading) {
-    return (
-      <div className="dev-loader" role="status" aria-label="Loading portfolio">
-        <div className="dev-loader__mark">JM</div>
-        <div className="dev-loader__name">
-          <span>JohnMart</span>
-          <strong>Dev</strong>
-        </div>
-        <div className="dev-loader__track"><span /></div>
-      </div>
-    );
-  }
-
   return (
+    <>
+    <AnimatePresence>
+      {isLoading && (
+        <motion.div
+          className="dev-loader"
+          role="status"
+          aria-label="Loading portfolio"
+          initial={shouldReduceMotion ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -12, scale: 0.985, filter: "blur(6px)" }}
+          transition={{ duration: shouldReduceMotion ? 0.01 : 0.65, ease: [0.76, 0, 0.24, 1] }}
+        >
+          <motion.div
+            className="dev-loader__mark-wrap"
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 18, scale: 0.88 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: shouldReduceMotion ? 0.01 : 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <img className="dev-loader__mark" src="/logo.jpg" alt="JohnMart Dev logo" />
+          </motion.div>
+          <motion.div
+            className="dev-loader__name"
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: shouldReduceMotion ? 0 : 0.24, duration: shouldReduceMotion ? 0.01 : 0.65, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span>JohnMart</span>
+            <strong>Dev</strong>
+          </motion.div>
+          <div className="dev-loader__track"><span /></div>
+        </motion.div>
+      )}
+    </AnimatePresence>
     <div className="shell">
       <Sidebar
         onNavigate={setTab}
@@ -87,6 +108,7 @@ function App() {
       </main>
       <BottomNav active={tab} onChange={setTab} />
     </div>
+    </>
   );
 }
 

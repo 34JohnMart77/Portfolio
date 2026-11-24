@@ -12,6 +12,7 @@ import certificateImage from "../certificate.jpg";
 import muriLogo from "../muri-logo.jpg";
 import payrollLogo from "../rcmeatshop.png";
 
+
 export const profile = {
   name: "John Mart Murillon",
   initials: "JM",
@@ -77,7 +78,7 @@ export const experience = [
   {
     role: "Full-Stack Developer — Muri (Personal Flagship)",
     period: "2025 — Present",
-    body: "AI-powered Learning Management System. Evolved from desktop prototype to mobile-first app: onboarding, streaks, achievements, bookmarks, notes, certificates, and a Claude-powered AI tutor integrated at the lesson level.",
+    body: "AI-powered Learning Management System. Evolved from desktop prototype to mobile-first app: onboarding, streaks, achievements, bookmarks, notes, certificates, and a Gemini AI tutor integrated at the lesson level.",
   },
   {
     role: "Full-Stack Developer — Payroll Monitoring System",
