@@ -13,6 +13,7 @@ import muriLogo from "../muri-logo.jpg";
 import payrollLogo from "../rcmeatshop.png";
 
 
+
 export const profile = {
   name: "John Mart Murillon",
   initials: "JM",
